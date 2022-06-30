@@ -12,9 +12,8 @@ public class User : BaseEntity
     public string Email { get; set; } = string.Empty;
 
     [Required, JsonIgnore]
-    public string Hash { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
 
-    [Required, JsonIgnore]
-    public byte[] HashSalt { get; set; } = new byte[] {};
+    public Company? Company { get; set; }
 
 }

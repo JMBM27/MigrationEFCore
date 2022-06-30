@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ApplicationCore.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,11 +16,10 @@ public static class ServicesConfiguration
                                 // This is use if you want to move your migrations out the project where the
                                 // dbcontext is (only for reference)
                                 migration => migration.MigrationsAssembly("Infrastructure"));
-
-            #region Dependency Injection
-
-
-            #endregion
         });
+
+        #region Dependency Injection
+        service.AddTransient<IUnitOfWork, UnitOfWork>();
+        #endregion
     }
 }

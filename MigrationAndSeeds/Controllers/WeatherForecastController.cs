@@ -1,3 +1,5 @@
+using ApplicationCore.Entities;
+using ApplicationCore.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MigrationAndSeeds.Controllers
@@ -12,10 +14,12 @@ namespace MigrationAndSeeds.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IUnitOfWork<User> uow;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+            uow = unitOfWork;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -28,6 +32,11 @@ namespace MigrationAndSeeds.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        public void Test()
+        {
+         
         }
     }
 }
