@@ -9,9 +9,9 @@ public class MigrationAndSeedContext : DbContext
     {
     }
 
-    public DbSet<User> User;
+    public DbSet<User> User { get; set; }
 
-    public DbSet<Company> Company;
+    public DbSet<Company> Company { get; set; }
 
-    public DbSet<Catalog> Catalog;
+    public DbSet<Catalog> Catalog { get; set; }
 }

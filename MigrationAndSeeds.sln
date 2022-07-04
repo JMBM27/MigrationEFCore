@@ -5,9 +5,13 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MigrationAndSeeds", "MigrationAndSeeds\MigrationAndSeeds.csproj", "{0B1621A7-4CEC-4FF8-9661-13850BF7E4BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{1D679909-FCE4-447A-B644-7C0C8D4B7168}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{1D679909-FCE4-447A-B644-7C0C8D4B7168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationCore", "ApplicationCore\ApplicationCore.csproj", "{C9753605-5911-448B-9AC5-D6E19C55995E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCore", "ApplicationCore\ApplicationCore.csproj", "{C9753605-5911-448B-9AC5-D6E19C55995E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{91EAA0A8-40CD-4069-8273-D47C59032BFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{AB18D44E-3A39-4D2D-B05E-98717EA1F6CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B1621A7-4CEC-4FF8-9661-13850BF7E4BE} = {91EAA0A8-40CD-4069-8273-D47C59032BFC}
+		{1D679909-FCE4-447A-B644-7C0C8D4B7168} = {91EAA0A8-40CD-4069-8273-D47C59032BFC}
+		{C9753605-5911-448B-9AC5-D6E19C55995E} = {91EAA0A8-40CD-4069-8273-D47C59032BFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56940499-137F-4A21-AEE9-CFE61026FCCF}

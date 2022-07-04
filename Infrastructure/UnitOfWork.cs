@@ -1,32 +1,39 @@
-﻿using ApplicationCore.Entities;
-using ApplicationCore.Interfaces.Repositories;
+﻿using ApplicationCore.Interfaces.Repositories;
 using Infrastructure.Data;
-using Infrastructure.Repositories;
 
 namespace Infrastructure;
 
-public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : MigrationAndSeedContext, IDisposable
+// This should go in a shared project 
+public class UnitOfWork : IDisposable, IUnitOfWork
 {
-    private TContext _context;
 
-    public UnitOfWork()
+    private readonly MigrationAndSeedContext _dbContext;
+
+    public IUserRepository User { get; }
+
+    public UnitOfWork(MigrationAndSeedContext dbContext, IUserRepository user)
     {
-
+        _dbContext = dbContext;
+        User = user;
     }
-
-    public TContext Context
-    {
-        get { return _context; }
-    }
-
 
     public async Task CommitAsync()
     {
-        await _context.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync();
     }
 
     public void Dispose()
     {
-       _context.Dispose();
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            _dbContext.Dispose();
+        }
     }
 }
+

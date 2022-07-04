@@ -4,7 +4,7 @@
 
 
 # Structure folder (Clean architecture)
-Each project has clear responsibilities, the UI Layer should interact with the ApplicationCore and the the ApplicationCore with the Insfrastructure layer if the UI Layer needs interact with the Infrastructura (an example is seed the database in the startup) should interact with interfaces defined in the ApplicationCore layer.
+Each project has clear responsibilities, the UI Layer should interact with the ApplicationCore and the the ApplicationCore with the Insfrastructure layer.
 
     1. ApplicationCore
         This layer hold the business layer (entities, services, interfaces, dtos and others).
@@ -27,7 +27,7 @@ Each project has clear responsibilities, the UI Layer should interact with the A
 
 
 # Migration with the .NET Core CLI
-    dotnet ef migrations add NameOfMigration -v -p Infrastructure/Infrastructure.csproj -s MigrationsAndSeeds/MigrationsAndSeeds.csproj
+    dotnet ef migrations add CreateTables -v -p Infrastructure/Infrastructure.csproj -s MigrationAndSeeds/MigrationAndSeeds.csproj
     
     -v (Show verbose output)
     -p (Relative path to the project folder who has the database context)
@@ -40,4 +40,4 @@ Run the command and it will create in the Infrastructure project and inside the 
 
 After created those two files everything is setup to run the update command and will save the changes into database
 
->dotnet ef database update  -v -p Infrastructure/Infrastructure.csproj -s MigrationsAndSeeds/MigrationsAndSeeds.csproj
+>dotnet ef database update  -v -p Infrastructure/Infrastructure.csproj -s MigrationAndSeeds/MigrationAndSeeds.csproj

@@ -10,6 +10,9 @@ public class Catalog : BaseEntity
     [Required, MinLength(5), MaxLength(20)]
     public string Code { get; set; } = string.Empty;
 
+    [Required, MinLength(5), MaxLength(100)]
+    public string Description { get; set; } = string.Empty;
+
     [Required, Precision(18,4) , Range(0, Double.PositiveInfinity)]
     public decimal Price { get; set; }
 
@@ -19,7 +22,7 @@ public class Catalog : BaseEntity
     [Required, DefaultValue(1)]
     public byte OfferCalculation { get; set; }
 
-    public string Description { get; set; } = string.Empty;
+
 
     public User User { get; set; }
 

@@ -1,6 +1,8 @@
 ﻿namespace ApplicationCore.Interfaces.Repositories;
-public interface IUnitOfWork<T> where T : class
+
+public interface IUnitOfWork
 {
+    IUserRepository User { get; }
     Task CommitAsync();
 
 }

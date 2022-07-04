@@ -1,10 +1,10 @@
 ﻿namespace ApplicationCore.Interfaces.Repositories;
 
-public interface IGenericRepository<T> where T : class
+public interface IGenericRepository<TEntity> where TEntity : class
 {
-    Task<T> AddAsync(T entity);
+    Task AddAsync(TEntity entity);
 
-    Task<T> UpdateAsync(T entity);
+    void UpdateAsync(TEntity entity);
 
-    Task DeleteAsync(T entity);
+    void DeleteAsync(TEntity entity);
 }

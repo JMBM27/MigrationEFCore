@@ -1,35 +1,29 @@
 ﻿using ApplicationCore.Interfaces.Repositories;
 using Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : class
+public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
 {
+    protected readonly MigrationAndSeedContext _context;
 
-    internal IUnitOfWork<T> _unitOfWork;
-
-    public GenericRepository(IUnitOfWork<T> unitOfWork)
+    public GenericRepository(MigrationAndSeedContext context)
     {
-        _unitOfWork = unitOfWork;
+        _context = context;
     }
 
-
-   
-    public virtual async Task<T> AddAsync(T entity)
+    public virtual async Task AddAsync(TEntity entity)
     {
-        throw new NotImplementedException();
+        await _context.Set<TEntity>().AddAsync(entity);
     }
 
-    public virtual async Task<T> UpdateAsync(T entity)
+    public virtual void UpdateAsync(TEntity entity)
     {
-        throw new NotImplementedException();
-
+        _context.Set<TEntity>().Update(entity);
     }
 
-    public virtual async Task DeleteAsync(T entity)
+    public virtual void DeleteAsync(TEntity entity)
     {
-        throw new NotImplementedException();
+        _context.Set<TEntity>().Remove(entity);
     }
-
 }

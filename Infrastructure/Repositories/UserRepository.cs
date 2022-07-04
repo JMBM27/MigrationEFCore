@@ -1,28 +1,25 @@
-﻿using ApplicationCore.Entities;
+﻿
+using ApplicationCore.Entities;
 using ApplicationCore.Interfaces.Repositories;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
 public class UserRepository : GenericRepository<User>, IUserRepository
 {
 
-    public UserRepository(IUnitOfWork<User> unitOfWork) : base(unitOfWork)
+    public UserRepository(MigrationAndSeedContext context) : base(context)
     {
 
     }
 
-    public Task<User> AddAsync(User entity)
+    public async Task<IEnumerable<User>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _context.User
+                        .Include(d => d.Company)
+                        .ToListAsync();
     }
 
-    public  Task<User> UpdateAsync(User entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public  Task DeleteAsync(User entity)
-    {
-        throw new NotImplementedException();
-    }
 }
+
